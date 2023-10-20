@@ -18,11 +18,12 @@ export default class App extends Component {
 
   onChangeInput = (text) => {
     this.setState({ textValue: text });
+    console.warn(`El valor del input es: ${text}`);
   };
 
   onPressLearnMore = () => {
     console.warn('Presionaste un butón');
-    Alert.alert('Carlos Zamora', this.state.textValue);
+    Alert.alert(this.state.textValue, 'Eso fue lo que se escribió');
   };
 
   render() {
