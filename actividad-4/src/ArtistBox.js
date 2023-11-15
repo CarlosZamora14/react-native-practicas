@@ -5,13 +5,27 @@ import {
   View,
   Image
 } from 'react-native';
+import { getArtistImage } from './api-client.js';
 
 export default class ArtistBox extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: null
+    };
+  }
+
+  componentDidMount() {
+    const { name } = this.props.artist;
+    getArtistImage(name).then(image => this.setState({ image: image }));
+  }
+
   render() {
-    const { image, name } = this.props.artist;
+    const { name, image } = this.props.artist;
+
     return (
       <View style={styles.artistBox}>
-        <Image style={styles.image} source={{ uri: image }} />
+        <Image style={styles.image} source={{ uri: this.state.image ?? image }} />
         <View style={styles.info}>
           <Text style={styles.name}>{name}</Text>
         </View>

@@ -20,5 +20,13 @@ function getMusicData() {
       };
     }));
 }
-export { getMusicData }
+
+function getArtistImage(artistName) {
+  const url = 'https://api.deezer.com/search?q=';
+
+  return fetch(url + encodeURIComponent(artistName))
+    .then(response => response.json())
+    .then(data => data.data[0].artist['picture_medium']);
+}
+export { getMusicData, getArtistImage }
 

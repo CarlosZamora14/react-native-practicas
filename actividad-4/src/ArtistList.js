@@ -13,19 +13,13 @@ export default class ArtistList extends Component {
     };
   }
 
-  updateDataSource = (data) => {
-    this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(data)
-    });
-  };
-
   componentDidMount() {
     this.updateDataSource(this.props.artists);
   }
 
-  componentWillReceiveProps(newProps) {
-    if (hewProps.artists !== this.props.artists) {
-      this.updateDataSource(newProps.artists);
+  componentDidUpdate(prevProps) {
+    if (prevProps.artists !== this.props.artists) {
+      this.updateDataSource(this.props.artists);
     }
   }
 
