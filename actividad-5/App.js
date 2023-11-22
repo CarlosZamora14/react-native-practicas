@@ -1,34 +1,36 @@
-import { Component } from 'react';
-import LoginView from './src/LoginView';
+import React, { Component } from 'react';
 import { Actions, Scene, Router } from 'react-native-router-flux';
+
+// Views
+import LoginView from './src/LoginView.js';
 import RegisterView from './src/RegisterView.js';
 import HomeView from './src/HomeView.js';
 import ArtistDetailView from '../actividad-5/src/ArtistDetailView.js';
 
 const scenes = Actions.create(
-  <Scene key="root">
+  <Scene key="root" headerLayoutPreset="center">
     <Scene
       key="login"
       component={LoginView}
       hideNavBar
     />
     <Scene
+      title="Home"
       key="home"
       component={HomeView}
-      title="Home"
       back={true}
     />
     <Scene
-      back={true}
+      title="Register"
       key="register"
       component={RegisterView}
-      title="Register"
+      back={true}
     />
     <Scene
-      back={true}
+      title="Artist details"
       key="details"
       component={ArtistDetailView}
-      title="Artist details"
+      back={true}
     />
   </Scene>
 );

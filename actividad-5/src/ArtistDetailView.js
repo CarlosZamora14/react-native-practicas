@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, SafeAreaView, Image, StyleSheet } from 'react-native';
-import { getArtistData } from './api-client.js';
+import { StatusBar } from 'expo-status-bar';
+
+// Api
+import { getArtistData, getArtistImage } from './api-client.js';
 
 export default class ArtistDetailView extends Component {
   constructor(props) {
@@ -15,7 +18,12 @@ export default class ArtistDetailView extends Component {
   }
 
   componentDidMount() {
-    getArtistData(this.props.artistId).then(artistDetails => this.setState(artistDetails));
+    getArtistData(this.props.artistId)
+      .then(artistDetails => {
+        this.setState(artistDetails);
+        return getArtistImage(artistDetails.name);
+      })
+      .then(artistImage => this.setState({ image: artistImage }));
   }
 
   render() {
@@ -32,6 +40,7 @@ export default class ArtistDetailView extends Component {
             </View> :
             <Text>No hay imagen :'(</Text>
         }
+        <StatusBar style="auto" />
       </SafeAreaView>
     );
   }

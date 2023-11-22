@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+
+// Components
 import ArtistList from './ArtistList.js';
+
+// Api
 import { getMusicData } from './api-client.js';
 
 export default class HomeView extends Component {
@@ -19,7 +21,8 @@ export default class HomeView extends Component {
     const artists = this.state.artists;
     return (
       <View style={styles.container}>
-        {artists && <ArtistList artists={artists} navigation={this.props.navigation} />}
+        {artists && <ArtistList artists={artists} />}
+        <StatusBar style="auto" />
       </View>
     );
   }

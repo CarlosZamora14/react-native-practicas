@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import ListView from 'deprecated-react-native-listview';
-import ArtistBox from './ArtistBox';
 import { Actions } from 'react-native-router-flux';
+
+// Components
+import ArtistBox from './ArtistBox.js';
 
 export default class ArtistList extends Component {
   constructor(props) {
@@ -30,7 +32,7 @@ export default class ArtistList extends Component {
   };
 
   handlePress(artist) {
-    this.props.navigation.navigate('details', { artistId: artist.id });
+    Actions.details({ artistId: artist.id });
   }
 
   render() {

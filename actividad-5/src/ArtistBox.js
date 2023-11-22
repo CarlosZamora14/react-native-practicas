@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image
-} from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+
+// Api
 import { getArtistImage } from './api-client.js';
 
 export default class ArtistBox extends Component {

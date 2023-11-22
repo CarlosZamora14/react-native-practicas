@@ -1,6 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, Button, TextInput, Alert, Image } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { Actions } from 'react-native-router-flux';
 
 export default class LoginView extends Component {
