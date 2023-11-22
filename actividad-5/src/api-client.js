@@ -36,16 +36,18 @@ function getArtistData(artistId) {
       mbid: data.artist.mbid,
       name: data.artist.name,
       listeners: data.artist.stats.listeners,
+      playcount: data.artist.stats.playcount,
       streamable: data.artist.streamable,
+      tags: data.artist.tags.tag,
     }));
 }
 
-function getArtistImage(artistName) {
+function getArtistImage(artistName, pictureSize = 'picture_medium') {
   const url = 'https://api.deezer.com/search?q=';
 
   return fetch(url + encodeURIComponent(artistName))
     .then(response => response.json())
-    .then(data => data.data[0].artist['picture_medium']);
+    .then(data => data.data[0].artist[pictureSize]);
 }
 
 export { getMusicData, getArtistData, getArtistImage };
